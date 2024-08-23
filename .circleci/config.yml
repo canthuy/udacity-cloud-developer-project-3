@@ -19,14 +19,12 @@ jobs:
     steps:
       - checkout # Check out the source code
 
-      - setup_remote_docker:
-          version: 20.10.7
-
       - run:
           name: Install Docker Compose
           command: |
             curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             chmod +x /usr/local/bin/docker-compose
+            docker-compose --version
 
       - run: # Build the Docker image
           name: Build Docker Image
