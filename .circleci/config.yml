@@ -7,10 +7,7 @@ orbs:
 executors:
   docker-executor:
     docker:
-      - image: canthuy/reverseproxy
-      - image: canthuy/udagram-api-user
-      - image: canthuy/udagram-api-feed
-      - image: canthuy/udagram-frontend
+      - image: docker:20.10.7-dind
     working_directory: ~/project
 
 jobs:
@@ -22,8 +19,6 @@ jobs:
       - run:
           name: Install Docker Compose
           command: |
-            curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
-            chmod +x /usr/local/bin/docker-compose
             docker-compose --version
 
       - run: # Build the Docker image
