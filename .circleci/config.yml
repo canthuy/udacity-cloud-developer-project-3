@@ -7,17 +7,16 @@ orbs:
 jobs:
   build_and_push:
     docker:
-      - image: circleci/python:3.9
+      - image: cimg/base:2022.09
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     working_directory: ~/project
     steps:
       - checkout # Check out the source code
 
-      - run:
-          name: Install Docker Compose
-          command: |
-            wget -o /usr/local/bin/docker-compose "https://github.com/docker/compose/releases/download/download/1.29.2/docker-compose-linux-x86_64" 
-            chmod +x /usr/local/bin/docker-compose
-            docker-compose --version
+      - setup_remote_docker:
+          docker_layer_caching: true
 
       - run: # Build the Docker image
           name: Build Docker Image
