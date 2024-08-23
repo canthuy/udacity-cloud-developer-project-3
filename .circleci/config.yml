@@ -7,7 +7,7 @@ orbs:
 jobs:
   build_and_push:
     docker:
-      - image: circleci/python:3.9
+      - image: circleci/python:3.9-alpine
     working_directory: ~/project
     steps:
       - checkout # Check out the source code
@@ -15,8 +15,8 @@ jobs:
       - run:
           name: Update and Install Dependencies
           command: |
-            apt-get update
-            apt-get install -y curl bash
+            apk update
+            apk install -y curl bash
 
       - run:
           name: Verify Installation
