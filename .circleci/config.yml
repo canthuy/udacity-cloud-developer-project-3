@@ -19,8 +19,8 @@ jobs:
       - run:
           name: Update and Install Dependencies
           command: |
-            apk update
-            apk add --no-cache curl curl-dev bash
+            apt-get update
+            apt-get add --no-cache curl curl-dev bash
 
       - run:
           name: Install Docker Compose
