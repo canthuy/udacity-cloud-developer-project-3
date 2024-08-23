@@ -7,10 +7,7 @@ orbs:
 executors:
   docker-executor:
     docker:
-      - image: canthuy/reverseproxy
-      - image: canthuy/udagram-api-user
-      - image: canthuy/udagram-api-feed
-      - image: canthuy/udagram-frontend
+      - image: circleci/python:3.9
     working_directory: ~/project
 
 jobs:
@@ -22,7 +19,8 @@ jobs:
       - run:
           name: Update and Install Dependencies
           command: |
-            apk add --no-cache curl curl-dev bash
+            sudo apt-get update
+            sudo apt-get install -y curl bash
 
       - run:
           name: Install Docker Compose
