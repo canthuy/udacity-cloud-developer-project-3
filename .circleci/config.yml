@@ -3,6 +3,16 @@
 version: 2.1
 orbs:
   node: circleci/node@5
+
+executors:
+  docker-executor:
+    docker:
+      - image: canthuy/reverseproxy
+      - image: canthuy/udagram-api-user
+      - image: canthuy/udagram-api-feed
+      - image: canthuy/udagram-frontend
+    working_directory: ~/project
+
 jobs:
   build_and_push:
     executor: docker-executor
