@@ -7,7 +7,7 @@ orbs:
 executors:
   docker-executor:
     docker:
-      - image: docker:20.10.7-dind
+      - image: 'cimg/node:16.14'
     working_directory: ~/project
 
 jobs:
@@ -15,10 +15,6 @@ jobs:
     executor: docker-executor
     steps:
       - checkout # Check out the source code
-
-      - setup_remote_docker:
-          version: 20.10.7
-          docker_layer_caching: true # Tăng tốc quá trình build Docker
 
       - run:
           name: Install Docker Compose
