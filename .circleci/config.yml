@@ -15,8 +15,14 @@ jobs:
       - run:
           name: Update and Install Dependencies
           command: |
-            sudo apt-get update
-            sudo apt-get install -y curl bash
+            apt-get update
+            apt-get install -y curl bash
+
+      - run:
+          name: Verify Installation
+          command: |
+            curl --version
+            bash --version
 
       - run:
           name: Install Docker Compose
