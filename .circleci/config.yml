@@ -25,6 +25,6 @@ jobs:
             docker-compose -f docker-compose-build.yaml push
 
 workflows:
-  build-and-test:
+  build_and_push_workflow:
     jobs:
       - build_and_push
