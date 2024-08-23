@@ -7,27 +7,15 @@ orbs:
 jobs:
   build_and_push:
     docker:
-      - image: circleci/python:3.9-alpine
+      - image: circleci/python:3.9
     working_directory: ~/project
     steps:
       - checkout # Check out the source code
 
       - run:
-          name: Update and Install Dependencies
-          command: |
-            apk update
-            apk install -y curl bash
-
-      - run:
-          name: Verify Installation
-          command: |
-            curl --version
-            bash --version
-
-      - run:
           name: Install Docker Compose
           command: |
-            curl -L "https://github.com/docker/compose/releases/download/download/1.29.2/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
+            wget -o /usr/local/bin/docker-compose "https://github.com/docker/compose/releases/download/download/1.29.2/docker-compose-linux-x86_64" 
             chmod +x /usr/local/bin/docker-compose
             docker-compose --version
 
