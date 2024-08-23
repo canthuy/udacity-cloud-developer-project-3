@@ -4,15 +4,11 @@ version: 2.1
 orbs:
   node: circleci/node@5
 
-executors:
-  docker-executor:
+jobs:
+  build_and_push:
     docker:
       - image: circleci/python:3.9
     working_directory: ~/project
-
-jobs:
-  build_and_push:
-    executor: docker-executor
     steps:
       - checkout # Check out the source code
 
