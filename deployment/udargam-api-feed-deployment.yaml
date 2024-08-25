@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: udargam-api-feed
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: udagram-api-feed
@@ -27,63 +27,27 @@ spec:
             - name: NODE_OPTIONS
               value: '--max-old-space-size=4096'
             - name: URL
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: URL
+              value: http://localhost:8100
             - name: AWS_BUCKET
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: AWS_BUCKET
+              value: udacity-project-3-dev
             - name: AWS_PROFILE
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: AWS_PROFILE
+              value: default
             - name: AWS_REGION
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: AWS_REGION
+              value: us-east-1
             - name: JWT_SECRET
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: JWT_SECRET
+              value: testing
             - name: POSTGRESS_DB
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: POSTGRESS_DB
+              value: udacity-project-3
             - name: POSTGRESS_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: POSTGRESS_HOST
+              value: cloud-developer-project-3.c8rvoqkrvypi.us-east-1.rds.amazonaws.com
             - name: POSTGRESS_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: env-secret
-                  key: POSTGRESS_PASSWORD
+              value: MTIzNDU2Nzg5
             - name: POSTGRESS_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: env-secret
-                  key: POSTGRESS_USERNAME
+              value: cG9zdGdyZXM=
             - name: AWS_ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: aws-secret
-                  key: aws_access_key_id
+              value: QVNJQVdVN1BIMjUyT04zSVFNTEU=
             - name: AWS_SECRET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: aws-secret
-                  key: aws_secret_access_key
+              value: NnZUSzUwelpYalhTMXVUTUsraktuZVFzcDFEQWtqZ0FheDRqcjJqeg
             - name: AWS_SECRET_ACCESS_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: aws-secret
-                  key: aws_secret_access_token
+              value: SVFvSmIzSnBaMmx1WDJWakVNTC8vLy8vLy8vLy93RWFDWFZ6TFhkbGMzUXRNaUpITUVVQ0lRRDdtZ05OTWo5aXpnZ0VHdmdOamRxaXcwdnVSRThnRzdwSkRpWG1yWk56endJZ0FYK2pHamU2RDdPMUtEYk15VXprRHJMZThGRWdqR2N4c0hFekxqYTRVUUVxeHdJSXl2Ly8vLy8vLy8vL0FSQUNHZ3cwTlRjek56ZzROemt6TkRnaURDVVdGWGt5dkZqa2N4NStEQ3FiQWdlTXdONEIyc0hPRWJVdGFYRnRFUFpDWkpBZEN5b1RaS3pZYnlmZGZpYWhpYVFFZ1NDbmFkYVBLNzdORUpZWTRYajJOS3RqNTVDNlgxRkdSYnhEL215b0VTUFprUnFHb1NHdE1HVS9JbktpdlM0UCttUVFPYlVpcGoyQ2U1M2ZVemxieUhSOUZQa0l2S1VMVDhXWjV2aTlyMmNrYlhzNlYwT040cURkbWo4dDAyZDlid0pKOGJ2TGVJVlZSU0tGU3E2YzRqMk1jNFQ2eUFFVDMxTDZFUll5UHBPdSs1M1ljYXRDWU1HK3ZxMWhyRk1mV3JvYmxwUTY4d1BLVlFweTZiOFU5ZmFBZlhma2czYjVUbHdNbXJyT0Qxd08xb2RQcm5ydTduTkdJTHY5bzVhRlVDMHJoVzh0SmZmVXN0dGdvWVd3ZG55d20zVEZoNUVGbWQ0OXVSQXdwYk9QMkoyUGxyWWV0cEhzWXNhYk96MVBJMFhBUVkzS3VjZ3crWXlxdGdZNm5RRmV0QTJ2NmdsZUJMTVpsWExsd1hSNC9ERm5zakRYWlg4MmdaYU5BUjNCaVpzWHk5T0JxT1FTczFmMkVJeWs2MWp1TUxKeHpTeXhOQXhqT2ZHcHpnZXRnMXJwWmFoY21JeUxtZHVvakZ6ZCt2R04wVHhhNU1meGNYODJUS2JlTG9jM2dkMm9OT3FFd3ZuM1lvaVBzRUMrNXZmY2t1NFhXc2dOZjY1OHNrdHhTZFZqaEkzQjhsUUZYVE83YzVFRGdsY3pIUkRMdXNtblFwT0ZoTHJB
       restartPolicy: Always
