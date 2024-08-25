@@ -26,11 +26,19 @@ import { V0_FEED_MODELS } from './controllers/v0/model.index';
   // something that will be covered in the next course.
   app.use(
     cors({
-      origin:
-        'http://a8d5554e288c24ebeb99a1ecb416a5e0-694037951.us-east-1.elb.amazonaws.com',
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
-      allowedHeaders: ['Content-Type', 'Authorization'],
-      credentials: true,
+      allowedHeaders: [
+        'Origin',
+        'X-Requested-With',
+        'Content-Type',
+        'Accept',
+        'X-Access-Token',
+        'Authorization',
+        'Access-Control-Allow-Origin',
+        'Access-Control-Allow-Headers',
+        'Access-Control-Allow-Methods',
+      ],
+      methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+      origin: '*',
     })
   );
 
